@@ -1,0 +1,22 @@
+http://javarevisited.blogspot.com.co/2012/08/top-10-jdbc-best-practices-for-java.html
+
+http://javarevisited.blogspot.com.co/2012/05/different-types-of-jdbc-drivers-in-java.html
+
+http://javarevisited.blogspot.com.co/2012/01/improve-performance-java-database.html
+
+http://o7planning.org/en/11207/simple-crud-example-with-java-restful-web-service
+
+
+Rest con json
+http://www.ateam-oracle.com/performance-study-rest-vs-soap-for-mobile-applications/
+
+
+http://www.oracle.com/technetwork/articles/java/securityperf-rest-ajax-177520.html
+
+
+------------
+
+https://www.infosys.com/digital/insights/Documents/restful-web-services.pdf
+
+hight scalable
+https://stackoverflow.com/questions/2567254/building-highly-scalable-web-services
