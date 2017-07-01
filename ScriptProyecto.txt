@@ -1,0 +1,53 @@
+CREATE PROCEDURE [dbo].[spEliminarItemFormularioTemporal]
+	@IdItem INT
+AS
+BEGIN
+	DELETE FormularioTemporal
+	WHERE IdItem=@IdItem
+
+	DELETE RespuestaTemporal
+	WHERE IdItem=@IdItem
+END
+
+CREATE TABLE [dbo].[Formulario] (
+    [Cedula]        VARCHAR (20)  NULL,
+    [IdItem]        INT           IDENTITY (1, 1) NOT NULL,
+    [Item]          VARCHAR (500) NULL,
+    [IdTipoControl] INT           NULL,
+    [Activo]        TINYINT       NULL
+);
+
+
+CREATE PROCEDURE [dbo].[spCrearFormularioProceso]
+	@Cedula VARCHAR(20)
+AS
+BEGIN
+
+	-- Se pasan a la tabla definitiva
+	INSERT INTO  Formulario (Cedula,IdItem,Item,IdTipoControl,Activo)
+	SELECT Cedula,IdItem,Item,IdTipoControl,Activo
+	FROM FormularioTemporal
+	WHERE Cedula = @Cedula
+
+	INSERT INTO  Respuesta (IdRespuesta,IdItem,Respuesta,Activo)
+	SELECT IdRespuesta,IdItem,Respuesta,Activo
+	FROM RespuestaTemporal
+	WHERE IdItem IN (
+		SELECT IdItem
+		FROM FormularioTemporal
+		WHERE Cedula = @Cedula
+	) 
+	 
+	-- Se elimina de la tabla temporal
+	DELETE
+	FROM FormularioTemporal
+	WHERE Cedula = @Cedula
+
+	DELETE
+	FROM RespuestaTemporal
+	WHERE IdItem IN (
+		SELECT IdItem
+		FROM FormularioTemporal
+		WHERE Cedula = @Cedula
+	) 
+END
