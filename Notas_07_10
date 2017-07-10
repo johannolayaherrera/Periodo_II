@@ -1,0 +1,57 @@
+Pantallazo de Inicio Migrañas y CraftTech
+Spinner 
+Lleno el spinner y por debajo convierto al Id
+https://danielme.com/2013/04/25/diseno-android-spinner/ 
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); 
+         
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        String[] valores = {"uno","dos","tres","cuatro","cinco","seis", "siete", "ocho"};
+        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, valores));
+        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+ 
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
+            {
+                Toast.makeText(adapterView.getContext(), (String) adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+            }
+ 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                // vacio
+                 
+            }
+        });
+ 
+    }
+
+Obtener el valor del Spinner 
+https://developer.android.com/reference/android/widget/AdapterView.html#getSelectedItem()    
+
+getSelectedItem ()
+ 
+
+
+
+Imagen
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/cool_pic"
+/>
+
+Imagen desde recursos
+https://www.mkyong.com/android/android-imageview-example/ 
+
+Pruebas Integridad
+Hacer CheckSum en Jmeter y validar que cuando le cambian la clave, detecta que hubo un error. Cambiar checksum.
+También simular que se envía un mensaje diferente con un checksum específico.
+Prueba de escalabilidad con checksum y https
+
+Si puede hacer el de enviar episodio con audio
+http://www.coderzheaven.com/2011/08/04/how-to-record-an-audio-in-android-and-email-it-as-attachment/ 
+https://www.tutorialspoint.com/android/android_audio_capture.htm 
