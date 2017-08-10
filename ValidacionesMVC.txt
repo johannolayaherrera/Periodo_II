@@ -1,0 +1,29 @@
+https://www.codeproject.com/Articles/1037026/Validations-in-MVC
+
+ [Authorize(Roles = "Administrador,Solicitante")]
+        public ActionResult Guardar(Items items, HttpPostedFileBase file)
+        {
+
+            foreach(Item item in items.lstItems)
+            {
+                if(item.valor.Trim()=="")
+                {
+                    ModelState.AddModelError(string.Empty, "Campo obligatorio" + item.Descripcion);
+                }
+            }
+            //Documento adjunto
+            if (ModelState.IsValid)
+            {
+                calificarItems(items, file);
+                return View();
+            }
+            else
+            {
+                return View("~/Views/GestionarFormulario/Formulario.cshtml", items);
+            }
+        }
+
+-------
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
